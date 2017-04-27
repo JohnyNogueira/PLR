@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ObjectUnsubscribedError } from 'rxjs/Rx';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 import { LoadingController } from 'ionic-angular';
 
 
 import { apiService } from '../../providers/apiService';
+import { PostPage } from '../post/post';
 
 
 @Component({
@@ -19,9 +19,14 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private apiService: apiService,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public modalCtrl: ModalController) {
 
   }
+
+ createPost() {
+   this.navCtrl.push(PostPage);
+ }
 
   getPlr(page): void {
     this.apiService.getList(page);

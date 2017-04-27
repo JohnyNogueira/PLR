@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      plr
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="post" (ngSubmit)="submitPost()">
+    <ion-item>
+      <ion-textarea rows="7" maxlength="140" formControlName="message" placeholder="Fale para o mundo!"></ion-textarea>
+    </ion-item>
+    <div padding>
+      <button ion-button color="danger" type="submit" [disabled]="!post.valid" block>DESABAFAR</button>
+    </div>
+  </form>
+</ion-content>

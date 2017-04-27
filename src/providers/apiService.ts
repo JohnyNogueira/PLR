@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
 // Operators
@@ -29,6 +29,22 @@ export class apiService {
         console.error('error while getting data!\n', error);
       }
     );
+  }
+
+  post(message): void {
+
+    let url = `${this.apiUrlTemplate}scrap`;
+
+    let body = JSON.stringify({ text: message });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(url, body, options)
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log("Oooops!");
+      });
+
   }
 
 }
